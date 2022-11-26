@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
+
+import { Button as MaterialButton } from "@material-ui/core";
 
 import ProductsContext from "./ProductsContext";
 
@@ -27,9 +29,24 @@ const Nav = () => {
   const { loggedin, setLoggedin } = React.useContext(ProductsContext);
   return (
     <NavStyles>
-      <h1>
+      {/* <h1>
         <Link to="/">Products</Link>
-      </h1>
+      </h1> */}
+      {/* <MaterialButton href="/">Products</MaterialButton> */}
+      <MaterialButton
+        style={{
+          padding: "1rem",
+          color: "#fff",
+          margin: "0 1rem",
+          borderRadius: "3px",
+          alignSelf: "center",
+          cursor: "pointer",
+          textTransform: "none",
+        }}
+        href="/"
+      >
+        eStore
+      </MaterialButton>
 
       <Button func={setLoggedin}>{loggedin ? "Log Out" : "Log In"}</Button>
     </NavStyles>
