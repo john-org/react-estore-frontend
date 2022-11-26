@@ -3,7 +3,7 @@
   "homepage": ".",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://react-recipes-backend.herokuapp.com/",
+  "proxy": "http://localhost:3456/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -40,7 +40,7 @@
     ]
   },
   "comments": {
-    "proxy": "previously http://localhost:3456/",
+    "proxy": "previously http://localhost:3456/ or https://react-recipes-backend.herokuapp.com/",
     "description": "Backend running in Heroku and Frontend running in Netlify",
     "license": "Still deciding MIT or BSD"
   }

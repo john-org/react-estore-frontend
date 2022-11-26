@@ -1,68 +1,68 @@
 import React from "react";
 import Button from "./Button";
 
-const FormEditRecipe = ({ editRecipe, thisRecipe }) => {
+const FormCreateProduct = ({ addProduct }) => {
   const [values, setValues] = React.useState({
-    title: thisRecipe.title,
-    image: thisRecipe.image,
-    description: thisRecipe.description,
-    year: thisRecipe.year,
+    title: "Product Title",
+    image: "product.png",
+    description: "Description of the product",
+    price: "1000",
   });
 
-  const updateRecipe = (event) => {
+  const createProduct = (event) => {
     event.preventDefault();
-    const recipe = {
-      ...thisRecipe,
+    const product = {
       title: values.title,
       image: values.image,
       description: values.description,
-      year: values.year,
+      price: values.price,
     };
-    editRecipe(recipe);
+    addProduct(product);
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     console.log(" name:: ", name, " value:: ", value);
+    // computed property names
     setValues({ ...values, [name]: value });
   };
 
   return (
     <div>
-      <h3>Edit Recipe</h3>
-      <form onSubmit={updateRecipe}>
+      <h3>Add Product Form</h3>
+      <form onSubmit={createProduct}>
         <input
           type="text"
-          placeholder="Recipe title"
+          placeholder="Product title"
           value={values.title}
           name="title"
           onChange={handleInputChange}
         />
         <input
           type="text"
-          placeholder="Recipe image"
+          placeholder="Product image"
           value={values.image}
           name="image"
           onChange={handleInputChange}
         />
         <textarea
-          placeholder="Recipe description"
+          placeholder="Product description"
           name="description"
           onChange={handleInputChange}
           value={values.description}
         />
         <input
           type="text"
-          placeholder="Recipe year"
-          value={values.year}
-          name="year"
+          placeholder="Product price"
+          value={values.price}
+          name="price"
           onChange={handleInputChange}
         />
 
-        <Button type="submit">Edit Recipe</Button>
+        <Button type="submit">Add Product</Button>
       </form>
     </div>
   );
 };
 
-export default FormEditRecipe;
+export default FormCreateProduct;

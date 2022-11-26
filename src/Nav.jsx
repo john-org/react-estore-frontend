@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
 
-import RecipesContext from "./RecipesContext";
+import ProductsContext from "./ProductsContext";
 
 const NavStyles = styled.nav`
   --bg-color: var(--blue-dark);
@@ -24,20 +24,14 @@ const NavStyles = styled.nav`
 `;
 
 const Nav = () => {
-  const { loggedin, setLoggedin } = React.useContext(RecipesContext);
+  const { loggedin, setLoggedin } = React.useContext(ProductsContext);
   return (
     <NavStyles>
       <h1>
-        <Link to="/">Recipes</Link>
+        <Link to="/">Products</Link>
       </h1>
 
-      {loggedin ? (
-        <Button func={() => setLoggedin(false)}>Log Out</Button>
-      ) : (
-        <Button func={() => setLoggedin(true)}>Log In</Button>
-      )}
-
-      {/* <Button func={setLoggedin}>{loggedin ? "Log Out" : "Log In"}</Button> */}
+      <Button func={setLoggedin}>{loggedin ? "Log Out" : "Log In"}</Button>
     </NavStyles>
   );
 };

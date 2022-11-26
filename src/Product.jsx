@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Recipe({ recipe }) {
-  const { title, year, description, image, _id } = recipe;
+function Product({ product }) {
+  const { title, price, description, image, _id } = product;
   return (
     <summary>
       <img src={`img/${image}`} alt={title} />
@@ -10,9 +10,9 @@ function Recipe({ recipe }) {
         <Link to={_id}>{title}</Link>
       </h3>
       <p>{description}</p>
-      <small>Published: {year}</small>
+      <small>Price: {price}</small>
     </summary>
   );
 }
 
-export default Recipe;
+export default Product;

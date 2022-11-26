@@ -1,40 +1,42 @@
 import React from "react";
-import Recipes from "./Recipes";
-import RecipeDetail from "./RecipeDetail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useFetch } from "./hooks/useFetch";
+
 import Nav from "./Nav";
+import Products from "./Products";
+import ProductDetail from "./ProductDetail";
+
+import { useFetch } from "./hooks/useFetch";
 import useToggle from "./hooks/useToggle";
 
-import RecipesContext from "./RecipesContext";
+import ProductsContext from "./ProductsContext";
 
 function App() {
-  const [recipes, setRecipes] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
   const [loggedin, setLoggedin] = useToggle(false);
   const [loading, setLoading] = useToggle(true);
   const [error, setError] = React.useState("");
-  const { get, post, del, put } = useFetch(`/api/recipes`);
+  const { get, post, del, put } = useFetch(`/api/products`);
 
-  const addRecipe = (recipe) => {
-    post("/api/recipes", recipe).then((data) => {
-      setRecipes([data, ...recipes]);
+  const addProduct = (product) => {
+    post("/api/products", product).then((data) => {
+      setProducts([data, ...products]);
     });
   };
 
-  const deleteRecipe = (recipeId) => {
-    console.log("recipeId:", recipeId);
-    del(`/api/recipes/${recipeId}`).then(
-      setRecipes((recipes) =>
-        recipes.filter((recipe) => recipe._id !== recipeId)
+  const deleteProduct = (productId) => {
+    console.log("productId:", productId);
+    del(`/api/products/${productId}`).then(
+      setProducts((products) =>
+        products.filter((product) => product._id !== productId)
       )
     );
   };
 
-  const editRecipe = (updatedRecipe) => {
-    console.log(updatedRecipe);
-    put(`/api/recipes/${updatedRecipe._id}`, updatedRecipe).then(
-      get("/api/recipes").then((data) => {
-        setRecipes(data);
+  const editProduct = (updatedProduct) => {
+    console.log(updatedProduct);
+    put(`/api/products/${updatedProduct._id}`, updatedProduct).then(
+      get("/api/products").then((data) => {
+        setProducts(data);
       })
     );
   };
@@ -42,9 +44,9 @@ function App() {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     setLoading(true);
-    get("/api/recipes")
+    get("/api/products")
       .then((data) => {
-        setRecipes(data);
+        setProducts(data);
         setLoading(false);
       })
       .catch((error) => setError(error));
@@ -59,26 +61,26 @@ function App() {
   }
 
   const value = {
-    recipes,
+    products,
     loggedin,
     setLoggedin,
-    addRecipe,
-    deleteRecipe,
-    editRecipe,
+    addProduct,
+    deleteProduct,
+    editProduct,
   };
 
   return (
-    <RecipesContext.Provider value={value}>
+    <ProductsContext.Provider value={value}>
       <main>
         <BrowserRouter>
           <Nav />
           <Routes>
-            <Route path="/" element={<Recipes />} />
-            <Route path="/:recipeId" element={<RecipeDetail />} />
+            <Route path="/" element={<Products />} />
+            <Route path="/:productId" element={<ProductDetail />} />
           </Routes>
         </BrowserRouter>
       </main>
-    </RecipesContext.Provider>
+    </ProductsContext.Provider>
   );
 }
 
