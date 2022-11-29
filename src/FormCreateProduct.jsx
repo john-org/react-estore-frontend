@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import MaterialButton from "./MaterialButton";
 
 const FormCreateProduct = ({ addProduct }) => {
   const [values, setValues] = React.useState({
@@ -11,6 +11,7 @@ const FormCreateProduct = ({ addProduct }) => {
 
   const createProduct = (event) => {
     event.preventDefault();
+    console.log(" event:: ", event);
     const product = {
       title: values.title,
       image: values.image,
@@ -26,6 +27,13 @@ const FormCreateProduct = ({ addProduct }) => {
     // computed property names
     setValues({ ...values, [name]: value });
   };
+
+  let style = {
+    background: "var(--blue-dark)",
+  };
+
+  let size = "small";
+  let variant = "contained";
 
   return (
     <div>
@@ -59,7 +67,16 @@ const FormCreateProduct = ({ addProduct }) => {
           onChange={handleInputChange}
         />
 
-        <Button type="submit">Add Product</Button>
+        {/* <Button type="submit">Add Product</Button> */}
+
+        <MaterialButton
+          style={style}
+          size={size}
+          variant={variant}
+          func={createProduct}
+        >
+          Add Product
+        </MaterialButton>
       </form>
     </div>
   );

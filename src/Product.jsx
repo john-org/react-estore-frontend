@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledSummary = styled.summary`
   .container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 30% 60%;
     column-gap: 3rem;
     grid-template-areas:
       "sidebar content-1"
@@ -41,6 +41,7 @@ const StyledSummary = styled.summary`
 
 function Product({ product }) {
   const { title, price, description, image, _id } = product;
+
   return (
     <StyledSummary>
       <div className="container">
@@ -56,7 +57,7 @@ function Product({ product }) {
           <p>{description}</p>{" "}
         </div>
         <div className="content-3">
-          <p>Price: {price}</p>
+          <p>Price: ${price}</p>
         </div>
       </div>
     </StyledSummary>

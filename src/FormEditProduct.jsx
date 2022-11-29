@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "./Button";
+import MaterialButton from "./MaterialButton";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 const FormEditProduct = ({ editProduct, thisProduct }) => {
   const [values, setValues] = React.useState({
@@ -26,6 +27,13 @@ const FormEditProduct = ({ editProduct, thisProduct }) => {
     console.log(" name:: ", name, " value:: ", value);
     setValues({ ...values, [name]: value });
   };
+
+  let style = {
+    background: "green",
+  };
+
+  let size = "small";
+  let variant = "contained";
 
   return (
     <div>
@@ -59,7 +67,16 @@ const FormEditProduct = ({ editProduct, thisProduct }) => {
           onChange={handleInputChange}
         />
 
-        <Button type="submit">Edit Product</Button>
+        {/* <Button type="submit">Edit Product</Button> */}
+        <MaterialButton
+          style={style}
+          size={size}
+          variant={variant}
+          func={updateProduct}
+        >
+          <UpgradeIcon />
+          Update Product
+        </MaterialButton>
       </form>
     </div>
   );
