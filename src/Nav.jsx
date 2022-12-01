@@ -6,8 +6,7 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import ProductsContext from "./ProductsContext";
 
 const NavStyles = styled.nav`
-  --bg-color: var(--blue-dark);
-  --btn-color: #007eb6;
+  --bg-color: #121212;
   min-height: 3rem;
   background-color: var(--bg-color);
   margin-bottom: 1rem;
@@ -27,7 +26,6 @@ let logInOut = {
   padding: "0.5rem",
   color: "#fff",
   margin: "0 1rem",
-  background: "var(--blue-dark, #bada55)",
   border: "2px solid #fff",
   borderRadius: "3px",
   alignSelf: "center",

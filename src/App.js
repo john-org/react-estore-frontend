@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 import Products from "./Products";
 import ProductDetail from "./ProductDetail";
+import Favicon from "react-favicon";
 
 import { useFetch } from "./hooks/useFetch";
 import useToggle from "./hooks/useToggle";
@@ -44,6 +45,7 @@ function App() {
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     setLoading(true);
+    document.title = "eStore";
     get("/api/products")
       .then((data) => {
         setProducts(data);
@@ -71,6 +73,7 @@ function App() {
 
   return (
     <ProductsContext.Provider value={value}>
+      <Favicon url="estore.svg" />
       <main>
         <BrowserRouter>
           <Nav />
